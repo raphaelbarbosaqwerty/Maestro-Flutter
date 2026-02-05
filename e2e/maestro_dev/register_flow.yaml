@@ -35,6 +35,8 @@ appId: com.example.maestroDev
 - inputText: "password123"
 
 # Step 4: Submit registration
+- hideKeyboard
+- scroll
 - takeScreenshot: "register_filled"
 - tapOn:
     id: "register_submit_button"
