@@ -1,0 +1,30 @@
+# login_flow.yaml
+# Tests the login flow
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+
+# Step 1: Verify login page is visible
+- assertVisible: "Login"
+- assertVisible: "Email"
+- assertVisible: "Password"
+
+# Step 2: Enter credentials
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+
+# Step 3: Submit login
+- takeScreenshot: "login_filled"
+- tapOn:
+    id: "login_submit_button"
+
+# Step 4: Verify navigation to dashboard
+- assertVisible: "Dashboard"
+- assertVisible: "Welcome to Dashboard!"
+- takeScreenshot: "dashboard_after_login"

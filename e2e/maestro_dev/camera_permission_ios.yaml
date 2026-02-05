@@ -1,0 +1,41 @@
+# camera_permission_ios.yaml
+# iOS: Auto-dismisses permission dialogs (English only)
+# Note: iOS simulator must be in English for auto-dismiss to work
+
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+    permissions:
+      camera: unset # Will trigger the permission dialog
+
+# Step 1: Login
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+- tapOn:
+    id: "login_submit_button"
+
+# Step 2: Navigate to camera page
+- assertVisible: "Dashboard"
+- tapOn:
+    id: "dashboard_camera_card"
+
+# Step 3: Verify camera page
+- assertVisible: "Camera Permission Test"
+- takeScreenshot: "ios_camera_page"
+
+# Step 4: Request camera permission
+# iOS will auto-dismiss the permission dialog
+- tapOn:
+    id: "camera_request_permission_button"
+
+# iOS automatically handles the permission dialog!
+# No need to tap "Allow" - Maestro does it for you
+
+# Step 5: Verify permission was granted
+- assertVisible: "Permission granted"
+- takeScreenshot: "ios_permission_granted"

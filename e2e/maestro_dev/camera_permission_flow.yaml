@@ -1,0 +1,45 @@
+# camera_permission_flow.yaml
+# Tests native permission dialog handling
+# Android: Can interact with system dialog directly
+# iOS: Auto-dismisses permission dialogs (English only)
+
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+    permissions:
+      camera: deny # Start with camera denied to test the flow
+
+# Step 1: Login first
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+- tapOn:
+    id: "login_submit_button"
+
+# Step 2: Navigate to camera page from dashboard
+- assertVisible: "Dashboard"
+- tapOn:
+    id: "dashboard_camera_card"
+- takeScreenshot: "camera_page_opened"
+
+# Step 3: Verify camera page
+- assertVisible: "Camera Permission Test"
+- assertVisible: "Not requested"
+
+# Step 4: Request camera permission
+- tapOn:
+    id: "camera_request_permission_button"
+
+# Step 5: Handle permission dialog (Android only - iOS auto-dismisses)
+# The text may vary by OS version:
+# - Android: "Allow" or "While using the app"
+# - iOS: Auto-dismissed in English
+- tapOn: "Allow"
+
+# Step 6: Verify permission was granted
+- assertVisible: "Permission granted"
+- takeScreenshot: "camera_permission_granted"

@@ -1,0 +1,45 @@
+# register_flow.yaml
+# Tests the registration flow
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+
+# Step 1: Navigate to register page
+- assertVisible: "Login"
+- tapOn:
+    id: "login_register_link"
+
+# Step 2: Verify register page is visible
+- assertVisible: "Register"
+- assertVisible: "Full Name"
+- assertVisible: "Email"
+- assertVisible: "Password"
+- assertVisible: "Confirm Password"
+
+# Step 3: Fill registration form
+- tapOn:
+    id: "register_name_field"
+- inputText: "John Doe"
+
+- tapOn:
+    id: "register_email_field"
+- inputText: "john@example.com"
+
+- tapOn:
+    id: "register_password_field"
+- inputText: "password123"
+
+- tapOn:
+    id: "register_confirm_password_field"
+- inputText: "password123"
+
+# Step 4: Submit registration
+- takeScreenshot: "register_filled"
+- tapOn:
+    id: "register_submit_button"
+
+# Step 5: Verify navigation to dashboard
+- assertVisible: "Dashboard"
+- assertVisible: "Welcome to Dashboard!"
+- takeScreenshot: "dashboard_after_register"

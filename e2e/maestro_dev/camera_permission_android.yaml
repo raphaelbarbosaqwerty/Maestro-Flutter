@@ -1,0 +1,42 @@
+# camera_permission_android.yaml
+# Android: Can interact with system dialogs directly using tapOn
+# Uses ADB under the hood for deep device control
+
+appId: com.example.maestro_dev
+---
+- launchApp:
+    clearState: true
+    permissions:
+      camera: unset # Will trigger the permission dialog
+
+# Step 1: Login
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+- tapOn:
+    id: "login_submit_button"
+
+# Step 2: Navigate to camera page
+- assertVisible: "Dashboard"
+- tapOn:
+    id: "dashboard_camera_card"
+
+# Step 3: Verify camera page
+- assertVisible: "Camera Permission Test"
+- takeScreenshot: "android_camera_page"
+
+# Step 4: Request camera permission
+- tapOn:
+    id: "camera_request_permission_button"
+
+# Step 5: Handle the native Android permission dialog
+# Maestro can interact with system dialogs!
+# Common button texts: "Allow", "While using the app", "Only this time"
+- tapOn: "While using the app"
+
+# Step 6: Verify permission was granted
+- assertVisible: "Permission granted"
+- takeScreenshot: "android_permission_granted"

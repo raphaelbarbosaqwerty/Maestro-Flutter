@@ -1,0 +1,47 @@
+# dashboard_flow.yaml
+# Tests the dashboard interactions
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+
+# Step 1: Login first to access dashboard
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+
+- tapOn:
+    id: "login_submit_button"
+
+# Step 2: Verify dashboard elements
+- assertVisible: "Dashboard"
+- assertVisible: "Welcome to Dashboard!"
+- assertVisible: "Profile"
+- assertVisible: "Settings"
+- assertVisible: "Analytics"
+- assertVisible: "Notifications"
+
+# Step 3: Interact with dashboard cards
+- tapOn:
+    id: "dashboard_profile_card"
+- assertVisible: "Profile tapped"
+
+- tapOn:
+    id: "dashboard_settings_card"
+- assertVisible: "Settings tapped"
+
+# Step 4: Test FAB
+- tapOn:
+    id: "dashboard_add_button"
+- assertVisible: "Add new item"
+- takeScreenshot: "dashboard_interactions"
+
+# Step 5: Logout
+- tapOn:
+    id: "dashboard_logout_button"
+- assertVisible: "Login"
+- takeScreenshot: "back_to_login"
