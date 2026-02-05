@@ -4,11 +4,11 @@ A Flutter project demonstrating end-to-end testing with [Maestro](https://maestr
 
 ## 📚 Documentation
 
-| Document                                  | Description                                                |
-| ----------------------------------------- | ---------------------------------------------------------- |
-| [CONFLUENCE.md](docs/CONFLUENCE.md)       | Complete Maestro guide with framework comparison (English) |
-| [CONFLUENCE_PT.md](docs/CONFLUENCE_PT.md) | Guia completo do Maestro (Português)                       |
-| [E2E_TESTING.md](docs/E2E_TESTING.md)     | Quick reference for running tests                          |
+| Document                              | Description                                                |
+| ------------------------------------- | ---------------------------------------------------------- |
+| [DOCS.md](docs/DOCS.md)               | Complete Maestro guide with framework comparison (English) |
+| [DOCS_PT.md](docs/DOCS_PT.md)         | Guia completo do Maestro (Português)                       |
+| [E2E_TESTING.md](docs/E2E_TESTING.md) | Quick reference for running tests                          |
 
 ## 🚀 Quick Start
 
@@ -47,8 +47,8 @@ maestro_dev/
 │       ├── maestro-test.md      # AI workflow: create tests
 │       └── maestro-run.md       # AI workflow: run tests
 └── docs/
-    ├── CONFLUENCE.md
-    ├── CONFLUENCE_PT.md
+    ├── DOCS.md
+    ├── DOCS_PT.md
     └── E2E_TESTING.md
 ```
 
