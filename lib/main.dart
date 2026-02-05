@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'pages/camera_page.dart';
 import 'pages/dashboard_page.dart';
 import 'pages/login_page.dart';
+import 'pages/profile_page.dart';
 import 'pages/register_page.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegisterPage(),
         '/dashboard': (context) => const DashboardPage(),
         '/camera': (context) => const CameraPage(),
+        '/profile': (context) => const ProfilePage(),
       },
     );
   }

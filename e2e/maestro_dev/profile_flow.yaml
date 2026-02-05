@@ -1,0 +1,82 @@
+# profile_flow.yaml
+# Tests the Profile page interactions
+appId: com.example.maestroDev
+---
+- launchApp:
+    clearState: true
+
+# Step 1: Login first to access dashboard
+- tapOn:
+    id: "login_email_field"
+- inputText: "test@example.com"
+
+- tapOn:
+    id: "login_password_field"
+- inputText: "password123"
+
+- tapOn:
+    id: "login_submit_button"
+
+# Step 2: Navigate to Profile page
+- assertVisible: "Dashboard"
+- tapOn:
+    id: "dashboard_profile_card"
+- takeScreenshot: "profile_page_loaded"
+
+# Step 3: Verify profile elements are visible
+- assertVisible: "Profile"
+- assertVisible:
+    id: "profile_avatar"
+- assertVisible:
+    id: "profile_name_text"
+- assertVisible:
+    id: "profile_email_text"
+- assertVisible:
+    id: "profile_settings_header"
+
+# Step 4: Test notification toggle
+- tapOn:
+    id: "profile_notifications_toggle"
+- tapOn:
+    id: "profile_notifications_toggle"
+- takeScreenshot: "notifications_toggled"
+
+# Step 5: Test dark mode toggle
+- tapOn:
+    id: "profile_dark_mode_toggle"
+- takeScreenshot: "dark_mode_enabled"
+- tapOn:
+    id: "profile_dark_mode_toggle"
+
+# Step 6: Test language selection
+- tapOn:
+    id: "profile_language_dropdown"
+- assertVisible: "Select Language"
+- tapOn:
+    id: "profile_language_option_português"
+- takeScreenshot: "language_changed"
+
+# Step 7: Test edit profile button
+- tapOn:
+    id: "profile_edit_button"
+- assertVisible: "Edit profile tapped"
+
+# Step 8: Test save settings button
+- tapOn:
+    id: "profile_save_button"
+- assertVisible: "Settings saved!"
+- takeScreenshot: "settings_saved"
+
+# Step 9: Test back navigation
+- tapOn:
+    id: "profile_back_button"
+- assertVisible: "Dashboard"
+- takeScreenshot: "back_to_dashboard"
+
+# Step 10: Navigate to profile again and test logout
+- tapOn:
+    id: "dashboard_profile_card"
+- tapOn:
+    id: "profile_logout_button"
+- assertVisible: "Login"
+- takeScreenshot: "logged_out"

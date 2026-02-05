@@ -38,12 +38,13 @@ class DashboardPage extends StatelessWidget {
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
                 children: [
-                  _buildDashboardCard(
+                  _buildNavigableDashboardCard(
                     context,
                     identifier: 'dashboard_profile_card',
                     icon: Icons.person,
                     title: 'Profile',
                     color: Colors.blue,
+                    route: '/profile',
                   ),
                   _buildDashboardCard(
                     context,
