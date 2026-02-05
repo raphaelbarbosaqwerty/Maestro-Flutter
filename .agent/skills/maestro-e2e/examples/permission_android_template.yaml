@@ -1,0 +1,25 @@
+# Permission Flow Template (Android)
+# Auto-generated template for testing permission dialogs on Android
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+    permissions:
+      all: deny # Start with all permissions denied
+
+# Step 1: Navigate to feature requiring permission
+- assertVisible: "Home"
+- tapOn:
+    id: "camera_feature_button"
+
+# Step 2: Request permission
+- tapOn:
+    id: "request_permission_button"
+
+# Step 3: Handle Android permission dialog
+# Options: "Allow", "While using the app", "Only this time", "Don't allow"
+- tapOn: "While using the app"
+
+# Step 4: Verify permission granted
+- assertVisible: "Permission granted"
+- takeScreenshot: "permission_granted"

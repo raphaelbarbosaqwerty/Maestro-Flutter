@@ -1,0 +1,26 @@
+# Web Flow Template
+# Auto-generated template for testing web applications
+url: ${URL}
+---
+- launchApp
+
+# Step 1: Verify page loaded
+- assertVisible: "Welcome"
+- takeScreenshot: "home_page"
+
+# Step 2: Navigate
+- tapOn: "Sign In"
+
+# Step 3: Fill form
+- tapOn: "Email"
+- inputText: ${EMAIL}
+
+- tapOn: "Password"
+- inputText: ${PASSWORD}
+
+# Step 4: Submit
+- tapOn: "Submit"
+
+# Step 5: Verify success
+- assertVisible: "Dashboard"
+- takeScreenshot: "login_success"
